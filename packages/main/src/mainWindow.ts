@@ -1,10 +1,11 @@
-import {app, BrowserWindow} from 'electron';
+import {app, BrowserWindow } from 'electron';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 async function createWindow() {
   const browserWindow = new BrowserWindow({
     show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+    backgroundColor: '#121212',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -13,7 +14,6 @@ async function createWindow() {
       preload: join(app.getAppPath(), 'packages/preload/dist/index.mjs'),
     },
   });
-
   /**
    * If the 'show' property of the BrowserWindow's constructor is omitted from the initialization options,
    * it then defaults to 'true'. This can cause flickering as the window loads the html content,

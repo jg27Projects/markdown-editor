@@ -1,3 +1,6 @@
+html,body{
+  background-color: transparent;
+}
 body{
   margin: 0;
   font-family: -apple-system, Blinkwink, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

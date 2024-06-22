@@ -54,6 +54,15 @@
     "vue-tsc": "2.0.21"
   },
   "dependencies": {
+    "@codemirror/commands": "^6.6.0",
+    "@codemirror/gutter": "^0.19.9",
+    "@codemirror/highlight": "^0.19.8",
+    "@codemirror/history": "^0.19.2",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/language": "^6.10.2",
+    "@codemirror/matchbrackets": "^0.19.4",
+    "@codemirror/state": "^6.4.1",
+    "electron-acrylic-window": "^0.5.11",
     "electron-updater": "6.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
