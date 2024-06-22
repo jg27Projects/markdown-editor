@@ -13,12 +13,13 @@ import type React from "react"
 // Props do componente useCodeMirror
 interface Props{
   initialDoc: string,
-  onChange: (state: string) => void
+  onChange: (state: EditorState) => void
 }
 
 const useCodeMirror = <T extends HTMLElement>(props: Props): [React.MutableRefObject<T | null>, EditorView?] => {
   const refContainer = useRef<T>(null)
-  const [editorView, setEditorView] = useState<EditorView>();
+  const [editorView, setEditorView] = useState<EditorView>()
+  const {onChange} = props
 
   useEffect(() => {
     // Se o refContainer não estiver definido, não faz nada
@@ -40,9 +41,8 @@ const useCodeMirror = <T extends HTMLElement>(props: Props): [React.MutableRefOb
         // updateListener é um listener que é chamado toda vez que o editor é atualizado
         EditorView.updateListener.of(update => {
           // Se houver mudanças no editor, chama a função onChange passando o novo estado
-          if (update.changes.length) {
-            // Atualiza o estado do editor
-            props.onChange(update.state.doc.toString())
+          if (update.changes) {
+            onChange && onChange(update.state)
           }
         })
       ]
@@ -53,7 +53,9 @@ const useCodeMirror = <T extends HTMLElement>(props: Props): [React.MutableRefOb
       parent: refContainer.current,
     })
     setEditorView(view)
-  }, [refContainer.current])
+  }, [refContainer])
 
   return [refContainer, editorView]
 }
+
+export default useCodeMirror
