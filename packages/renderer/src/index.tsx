@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import {createRoot as ReactDOM} from 'react-dom/client'
 import './index.css'
 import App from './app'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM(document.getElementById('root')!).render(<App />)
